@@ -1,0 +1,25 @@
+{
+  "vehicles": [
+    { "id": "red",    "model": "bajaj_red.fbx",    "role": "Sprinter",
+      "summary": "Highest top speed. Light, so it gets shoved around in a scrap.",
+      "speed": 10, "acceleration": 5, "weight": 4, "handling": 5 },
+    { "id": "orange", "model": "bajaj_orange.fbx", "role": "Tank",
+      "summary": "Loaded roof rack makes it the heaviest. Wins every bump, loses every straight.",
+      "speed": 4, "acceleration": 5, "weight": 10, "handling": 5 },
+    { "id": "yellow", "model": "bajaj_yellow.fbx", "role": "All-rounder",
+      "summary": "The taxi. No weakness, no standout strength. A good first pick.",
+      "speed": 6, "acceleration": 6, "weight": 6, "handling": 6 },
+    { "id": "green",  "model": "bajaj_green.fbx",  "role": "Corner carver",
+      "summary": "Best handling by a distance. Makes its time on twisty tracks.",
+      "speed": 5, "acceleration": 6, "weight": 4, "handling": 9 },
+    { "id": "blue",   "model": "bajaj_blue.fbx",   "role": "Launcher",
+      "summary": "Fastest off the line and out of slow corners. The lightest, so avoid contact.",
+      "speed": 5, "acceleration": 10, "weight": 3, "handling": 6 },
+    { "id": "indigo", "model": "bajaj_indigo.fbx", "role": "Freight train",
+      "summary": "Bull bar up front: fast and heavy once rolling, but slow to get going.",
+      "speed": 8, "acceleration": 3, "weight": 8, "handling": 5 },
+    { "id": "violet", "model": "bajaj_violet.fbx", "role": "Brawler",
+      "summary": "Punchy launch and plenty of mass. Runs wide in corners.",
+      "speed": 5, "acceleration": 8, "weight": 7, "handling": 4 }
+  ]
+}
