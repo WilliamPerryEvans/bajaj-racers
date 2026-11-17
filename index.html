@@ -50,6 +50,13 @@
     .keys { margin: 10px 0 0; font-size: 13px; opacity: 0.8; }
     kbd { background: #ffffff22; border-radius: 4px; padding: 1px 6px; font: inherit; }
     @media (max-width: 900px) { #cards { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+    #help { display: none; margin-bottom: 12px; padding: 10px 14px; border-radius: 10px; background: #f2c23022; border: 1px solid #f2c23066;
+      font-size: 15px; line-height: 1.5; }
+    #help.show { display: block; }
+    #help b { display: block; font-size: 17px; margin-bottom: 2px; }
+    #help .touchhelp, body.touch #help .keyhelp { display: none; }
+    body.touch #help .touchhelp { display: inline; }
+    #helpok { margin-left: 8px; padding: 4px 14px; }
     #mp { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 8px; padding-top: 8px; border-top: 1px solid #fff2; }
     .mplabel { font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.85; margin-right: 4px; }
     .mpor { font-size: 13px; opacity: 0.7; }
@@ -114,19 +121,62 @@
     @keyframes pop { 0% { opacity: 0; transform: translateY(10px); } 10%, 75% { opacity: 1; transform: none; } 100% { opacity: 0; } }
     #clock { position: absolute; left: 244px; bottom: 44px; font-size: 30px; font-weight: bold; font-style: italic; text-shadow: 0 2px 6px #000c; }
     #hint { position: absolute; left: 244px; bottom: 20px; font-size: 13px; opacity: 0.75; text-shadow: 0 1px 3px #000; }
+    /* ---- touch controls (phones and tablets) */
+    #touch { position: fixed; inset: 0; z-index: 15; display: none; pointer-events: none; touch-action: none; user-select: none; -webkit-user-select: none; }
+    #touch > * { pointer-events: auto; }
+    #tsteer { position: absolute; left: 0; top: 52px; bottom: 0; width: 46%; }
+    .tring { position: absolute; left: 22%; top: 62%; width: 120px; height: 120px; margin: -60px 0 0 -60px; border-radius: 50%;
+      border: 3px solid #fff6; background: #0003; display: flex; align-items: center; justify-content: center; }
+    .tknob { width: 54px; height: 54px; border-radius: 50%; background: #fffc; box-shadow: 0 2px 8px #0008; }
+    .tlabel { position: absolute; left: 22%; bottom: 10px; transform: translateX(-50%); font-size: 12px; letter-spacing: 1px; opacity: 0.55; }
+    #tsteer.on .tlabel { display: none; }
+    #tpedals { position: absolute; right: max(14px, env(safe-area-inset-right)); bottom: 14px; width: 250px; height: 240px; }
+    .tbtn { position: absolute; border: 2px solid #fff8; color: #fff; font: bold 15px Arial, sans-serif; letter-spacing: 1px;
+      background: #0007; border-radius: 50%; touch-action: none; -webkit-tap-highlight-color: transparent; }
+    .tbtn.on { background: var(--sun); color: #111; border-color: #fff; }
+    .tgas { right: 0; bottom: 0; width: 118px; height: 118px; font-size: 20px; background: #1d7a3acc; }
+    .tbrake { right: 128px; bottom: 0; width: 92px; height: 92px; background: #8a2a20cc; }
+    .tsmall { width: 70px; height: 70px; font-size: 13px; }
+    .tsmall[data-hold="nitro"] { right: 22px; bottom: 132px; background: #c46a12cc; }
+    .tsmall[data-hold="handbrake"] { right: 108px; bottom: 104px; }
+    #ttop { position: absolute; top: 8px; right: max(10px, env(safe-area-inset-right)); display: flex; gap: 6px; }
+    .tmini { position: static; border-radius: 10px; padding: 8px 10px; font-size: 12px; }
+    body.touch #hint { display: none; }
+    body.touch #credit { right: auto; left: max(8px, env(safe-area-inset-left)); top: 4px; }
+    body.touch #radio { top: 24px; }
+    body.touch #minimap { width: 150px; height: 150px; left: max(10px, env(safe-area-inset-left)); bottom: 10px; }
+    body.touch #clock { left: 170px; bottom: 14px; font-size: 22px; }
+    body.touch #speedbox { right: 270px; bottom: 16px; }
+    body.touch #speed { font-size: 46px; }
+    body.touch #street { right: 270px; bottom: 96px; font-size: 16px; }
+    body.touch #results .keys::after { content: " · tap here to go again"; }
+    #turn { display: none; }
+    @media (orientation: portrait) {
+      body.touch #turn { display: flex; position: fixed; inset: 0; z-index: 50; background: #111e; align-items: center; justify-content: center;
+        text-align: center; padding: 30px; font-size: 22px; font-weight: bold; line-height: 1.4; }
+    }
     #credit { position: fixed; right: 8px; top: 6px; font-size: 11px; opacity: 0.6; z-index: 12; text-shadow: 0 1px 2px #000; }
     @media (prefers-reduced-motion: reduce) { #place.show { animation-duration: 0.01s; opacity: 1; } }
   </style>
-  <script type="module" crossorigin src="./assets/index-D6YGrc68.js"></script>
+  <script type="module" crossorigin src="./assets/index-8TDSReKP.js"></script>
 </head>
 <body>
   <canvas id="c"></canvas>
+  <div id="turn">Turn your phone sideways to play</div>
 
   <div id="loading"><h1>BAJAJ RACERS</h1><p id="loadmsg">Building Kivukoni…</p></div>
 
   <div id="menu">
     <div class="title"><h1>BAJAJ<br />RACERS</h1><p>Kivukoni · Dar es Salaam</p></div>
     <div class="panel">
+      <div id="help">
+        <b>Karibu! Welcome to Kivukoni.</b>
+        <span class="keyhelp">Drive with <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or the arrows, <kbd>Shift</kbd> for nitro, <kbd>Space</kbd> to slide round corners.</span>
+        <span class="touchhelp">Slide a thumb on the left to steer; GAS, BRAKE, NITRO and DRIFT are on the right.</span>
+        Type your name for the number plate, pick a bajaj and a mode, then press DRIVE. Landmarks are on the map;
+        to play with friends, one of you creates a room and shares the code.
+        <button id="helpok" class="mode">Got it</button>
+      </div>
       <div class="row">
         <label for="playername">Your plate</label>
         <input id="playername" maxlength="10" placeholder="YOUR NAME" autocomplete="off" spellcheck="false" />
@@ -148,7 +198,7 @@
         <input id="mpCode" maxlength="5" placeholder="CODE" autocomplete="off" spellcheck="false" />
         <button id="mpJoin" class="mode">Join</button>
         <button id="mpLeave" class="mode">Leave room</button>
-        <span id="mpInfo">Up to 7 players, each on their own computer.</span>
+        <span id="mpInfo">Up to 7 players, each on their own computer or phone.</span>
       </div>
       <div id="mpPlayers"></div>
       <div id="cards"></div>
