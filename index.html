@@ -19,7 +19,8 @@
     #loading p { margin: 0; font-size: 18px; color: var(--cream); text-shadow: 0 1px 2px #0008; }
 
     #menu { position: fixed; inset: 0; display: none; flex-direction: column; justify-content: space-between; z-index: 20;
-      pointer-events: none; padding: 22px clamp(14px, 3vw, 40px); }
+      pointer-events: none; padding: 22px clamp(14px, 3vw, 40px); overflow-y: auto; }
+    @media (max-height: 700px) { #menu { padding-top: 12px; } .title h1 { font-size: 34px; } .title p { font-size: 13px; } .panel .keys { display: none; } }
     #menu > * { pointer-events: auto; }
     .title { align-self: flex-start; padding: 10px 26px 14px 14px; margin: -10px 0 0 -14px; border-radius: 16px;
       background: radial-gradient(ellipse at 30% 40%, #000a, #0000 72%); }
@@ -49,6 +50,16 @@
     .keys { margin: 10px 0 0; font-size: 13px; opacity: 0.8; }
     kbd { background: #ffffff22; border-radius: 4px; padding: 1px 6px; font: inherit; }
     @media (max-width: 900px) { #cards { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+    #mp { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 8px; padding-top: 8px; border-top: 1px solid #fff2; }
+    .mplabel { font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.85; margin-right: 4px; }
+    .mpor { font-size: 13px; opacity: 0.7; }
+    #mpCode { font: bold 16px Arial, sans-serif; letter-spacing: 3px; text-transform: uppercase; width: 96px; padding: 6px 8px; border-radius: 8px; border: 0; }
+    #mpLeave { display: none; }
+    #mpInfo { font-size: 14px; opacity: 0.9; flex: 1 1 260px; }
+    #mpInfo.bad { color: #ffb0a0; opacity: 1; }
+    #mpPlayers { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+    #mpPlayers:empty { display: none; }
+    #mpPlayers span { font-size: 13px; font-weight: bold; letter-spacing: 1px; padding: 3px 10px; border-radius: 999px; background: #ffffff1c; border-left: 7px solid; }
     #modes { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 10px; }
     .mode { font: bold 14px inherit; font-family: inherit; color: inherit; background: #ffffff14; border: 2px solid transparent; border-radius: 8px;
       padding: 7px 14px; cursor: pointer; letter-spacing: 0.5px; }
@@ -106,7 +117,7 @@
     #credit { position: fixed; right: 8px; top: 6px; font-size: 11px; opacity: 0.6; z-index: 12; text-shadow: 0 1px 2px #000; }
     @media (prefers-reduced-motion: reduce) { #place.show { animation-duration: 0.01s; opacity: 1; } }
   </style>
-  <script type="module" crossorigin src="./assets/index-DqCb0BgN.js"></script>
+  <script type="module" crossorigin src="./assets/index-1BiEf-tu.js"></script>
 </head>
 <body>
   <canvas id="c"></canvas>
@@ -130,6 +141,16 @@
         <button class="mode" data-mode="race2" title="Race: Tanzanite Bridge Run. 2.5 km point to point, from the Askari Monument to the Tanzanite Bridge.">Race: Bridge Run</button>
         <span id="modeblurb"></span>
       </div>
+      <div id="mp">
+        <span class="mplabel">Play with friends</span>
+        <button id="mpCreate" class="mode">Create a room</button>
+        <span class="mpor" id="mpOr">or</span>
+        <input id="mpCode" maxlength="5" placeholder="CODE" autocomplete="off" spellcheck="false" />
+        <button id="mpJoin" class="mode">Join</button>
+        <button id="mpLeave" class="mode">Leave room</button>
+        <span id="mpInfo">Up to 7 players, each on their own computer.</span>
+      </div>
+      <div id="mpPlayers"></div>
       <div id="cards"></div>
       <p class="keys"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or arrows to drive · <kbd>Space</kbd> handbrake · <kbd>Shift</kbd> nitro ·
         <kbd>H</kbd> horn · <kbd>R</kbd> back onto the road · <kbd>C</kbd> camera · <kbd>T</kbd> skip an hour · <kbd>P</kbd> pause · <kbd>N</kbd> radio · <kbd>M</kbd> mute · <kbd>Esc</kbd> garage. A game controller works too.</p>

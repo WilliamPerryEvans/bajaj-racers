@@ -9,6 +9,9 @@ the Kigamboni ferry) are modelled from photographs.
 
 Needs a keyboard (or a game controller) and a reasonably recent computer. Phones and tablets are not supported yet.
 
+Play with up to 7 friends: in the garage, one person creates a room and shares the 5-letter code; the others join
+with it, each on their own computer. Free roam together or race each other.
+
 Keys: W A S D or arrows to drive, Space handbrake, Shift nitro, H horn, R back onto the road, C camera,
 N radio, T skip an hour, P pause, M mute, Esc garage.
 
