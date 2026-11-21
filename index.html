@@ -71,6 +71,10 @@
       background: #ffffff22; font-size: 13px; }
     #keyhunt .got b { background: #f5c542; color: #1b1a17; }
     #keyhunt .got span { color: #f5c542; font-weight: bold; }
+    #guidebtn { display: block; width: 100%; margin: 2px 0 8px; padding: 7px 12px; border-radius: 8px; border: 1px solid #f5c54288;
+      background: #f5c5421c; color: inherit; font: inherit; font-size: 14px; cursor: pointer; pointer-events: auto; text-align: center; }
+    #guidebtn.on { background: #f5c542; color: #1b1a17; text-shadow: none; }
+    #guidebtn b { letter-spacing: 1px; }
     @media (max-height: 760px) { #paused #legend { display: none; } }
     #help { display: none; margin-bottom: 12px; padding: 10px 14px; border-radius: 10px; background: #f2c23022; border: 1px solid #f2c23066;
       font-size: 15px; line-height: 1.5; }
@@ -103,7 +107,8 @@
     #arrow { display: none; position: absolute; left: -24px; top: 0; width: 48px; height: 48px; transform-origin: 50% 50%; }
     #arrow::before { content: ""; position: absolute; left: 6px; top: 0; border-left: 18px solid transparent; border-right: 18px solid transparent;
       border-bottom: 40px solid var(--sun); filter: drop-shadow(0 2px 3px #000a); }
-    #arrowdist { position: absolute; left: -60px; width: 120px; top: 54px; text-align: center; font-size: 15px; text-shadow: 0 1px 4px #000; }
+    #arrowdist { position: absolute; left: -160px; width: 320px; top: 54px; text-align: center; font-size: 15px; text-shadow: 0 1px 4px #000; }
+    #arrowdist.keyguide { color: #f5c542; font-weight: bold; font-size: 17px; text-shadow: 0 1px 3px #000, 0 0 8px #000; }
     #toast { position: absolute; left: 0; right: 0; top: 30%; text-align: center; font-size: 30px; font-weight: bold; font-style: italic; opacity: 0;
       text-shadow: 0 2px 8px #000c; }
     #toast.good { color: #ffe27a; } #toast.bad { color: #ff8f7a; }
@@ -169,6 +174,7 @@
     body.touch #minimap { width: 150px; height: 150px; left: max(10px, env(safe-area-inset-left)); bottom: 10px; }
     body.touch #clock { left: 170px; bottom: 14px; font-size: 22px; }
     body.touch #keys { left: 170px; bottom: 46px; font-size: 15px; }
+    body.paused #tsteer, body.paused #tpedals { visibility: hidden; pointer-events: none; }
     body.touch #keyhunt { font-size: 13px; }
     body.touch #speedbox { right: 270px; bottom: 16px; }
     body.touch #speed { font-size: 46px; }
@@ -182,7 +188,7 @@
     #credit { position: fixed; right: 8px; top: 6px; font-size: 11px; opacity: 0.6; z-index: 12; text-shadow: 0 1px 2px #000; }
     @media (prefers-reduced-motion: reduce) { #place.show { animation-duration: 0.01s; opacity: 1; } }
   </style>
-  <script type="module" crossorigin src="./assets/index-MUBCo5E0.js"></script>
+  <script type="module" crossorigin src="./assets/index-BkTHX8qs.js"></script>
 </head>
 <body>
   <canvas id="c"></canvas>
@@ -228,7 +234,7 @@
       <div id="mpPlayers"></div>
       <div id="cards"></div>
       <p class="keys"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or arrows to drive · <kbd>Space</kbd> handbrake · <kbd>Shift</kbd> nitro ·
-        <kbd>H</kbd> horn · <kbd>R</kbd> back onto the road · <kbd>C</kbd> camera · <kbd>T</kbd> skip an hour · <kbd>P</kbd> pause · <kbd>N</kbd> radio · <kbd>M</kbd> mute · <kbd>Esc</kbd> garage. A game controller works too.</p>
+        <kbd>H</kbd> horn · <kbd>R</kbd> back onto the road · <kbd>C</kbd> camera · <kbd>T</kbd> skip an hour · <kbd>P</kbd> pause · <kbd>N</kbd> radio · <kbd>M</kbd> mute · <kbd>K</kbd> key guide · <kbd>Esc</kbd> garage. A game controller works too.</p>
     </div>
   </div>
 
