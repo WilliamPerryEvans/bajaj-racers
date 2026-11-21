@@ -20,6 +20,9 @@
       "speed": 8, "acceleration": 3, "weight": 8, "handling": 5 },
     { "id": "violet", "model": "bajaj_violet.fbx", "role": "Brawler",
       "summary": "Punchy launch and plenty of mass. Runs wide in corners.",
-      "speed": 5, "acceleration": 8, "weight": 7, "handling": 4 }
+      "speed": 5, "acceleration": 8, "weight": 7, "handling": 4 },
+    { "id": "gold",   "model": "bajaj_yellow.fbx", "role": "Golden Key",
+      "summary": "Found all seven keys? Then it's yours: quick, sharp and solid, a little better than the rest at everything.",
+      "speed": 7, "acceleration": 7, "weight": 5, "handling": 7 }
   ]
 }
