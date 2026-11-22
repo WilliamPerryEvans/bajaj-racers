@@ -22,7 +22,7 @@
       "summary": "Punchy launch and plenty of mass. Runs wide in corners.",
       "speed": 5, "acceleration": 8, "weight": 7, "handling": 4 },
     { "id": "gold",   "model": "bajaj_yellow.fbx", "role": "Golden Key",
-      "summary": "Found all seven keys? Then it's yours: quick, sharp and solid, a little better than the rest at everything.",
-      "speed": 7, "acceleration": 7, "weight": 5, "handling": 7 }
+      "summary": "Found all seven keys? Then it's yours: near the top in every way, glowing gold, with blue nitro fire.",
+      "speed": 9, "acceleration": 9, "weight": 7, "handling": 9 }
   ]
 }

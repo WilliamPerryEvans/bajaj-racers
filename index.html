@@ -185,10 +185,12 @@
       body.touch #turn { display: flex; position: fixed; inset: 0; z-index: 50; background: #111e; align-items: center; justify-content: center;
         text-align: center; padding: 30px; font-size: 22px; font-weight: bold; line-height: 1.4; }
     }
+    #mute { display: none; position: fixed; left: 50%; top: 8px; transform: translateX(-50%); z-index: 40; padding: 5px 14px; border-radius: 999px;
+      background: #000a; color: #fff; font-size: 14px; font-weight: bold; letter-spacing: 1px; pointer-events: none; }
     #credit { position: fixed; right: 8px; top: 6px; font-size: 11px; opacity: 0.6; z-index: 12; text-shadow: 0 1px 2px #000; }
     @media (prefers-reduced-motion: reduce) { #place.show { animation-duration: 0.01s; opacity: 1; } }
   </style>
-  <script type="module" crossorigin src="./assets/index-BkTHX8qs.js"></script>
+  <script type="module" crossorigin src="./assets/index-BR-HxkK7.js"></script>
 </head>
 <body>
   <canvas id="c"></canvas>
@@ -201,7 +203,7 @@
     <div class="panel">
       <div id="help">
         <b>Karibu! Welcome to Kivukoni.</b>
-        <span class="keyhelp">Drive with <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or the arrows, <kbd>Shift</kbd> for nitro, <kbd>Space</kbd> to slide round corners.</span>
+        <span class="keyhelp">Drive with <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or the arrows, <kbd>N</kbd> for nitro, <kbd>B</kbd> to slide round corners, <kbd>Space</kbd> for sound off.</span>
         <span class="touchhelp">Slide a thumb on the left to steer; GAS, BRAKE, NITRO and DRIFT are on the right.</span>
         Type your name for the number plate, pick a bajaj and a mode, then press DRIVE. Landmarks are on the map, and
         seven gold keys are hidden round town in free roam (the clues are on the pause screen).
@@ -233,8 +235,9 @@
       </div>
       <div id="mpPlayers"></div>
       <div id="cards"></div>
-      <p class="keys"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or arrows to drive · <kbd>Space</kbd> handbrake · <kbd>Shift</kbd> nitro ·
-        <kbd>H</kbd> horn · <kbd>R</kbd> back onto the road · <kbd>C</kbd> camera · <kbd>T</kbd> skip an hour · <kbd>P</kbd> pause · <kbd>N</kbd> radio · <kbd>M</kbd> mute · <kbd>K</kbd> key guide · <kbd>Esc</kbd> garage. A game controller works too.</p>
+      <p class="keys"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or arrows to drive · <kbd>N</kbd> nitro · <kbd>B</kbd> handbrake ·
+        <kbd>H</kbd> horn · <kbd>Enter</kbd> back onto the road · <kbd>R</kbd> rear view · <kbd>C</kbd> camera · <kbd>M</kbd> music · <kbd>Space</kbd> sound on/off ·
+        <kbd>T</kbd> skip an hour · <kbd>P</kbd> pause · <kbd>K</kbd> key guide · <kbd>G</kbd> race again · <kbd>Esc</kbd> garage. A game controller works too.</p>
     </div>
   </div>
 
@@ -250,11 +253,12 @@
     <div id="keys" title="Gold keys found"><svg viewBox="-8 -8 16 16" fill="none" stroke="#f5c542" stroke-width="2" stroke-linecap="round">
       <circle cx="-3" cy="-3" r="3" /><path d="M-0.9 -0.9 L6 6 M3 3 L5 1 M4.6 4.6 L6.6 2.6" /></svg><span id="keycount">0/7</span></div>
     <div id="clock">08:30</div>
-    <div id="hint">N: radio · T: skip an hour · Esc: change bajaj</div>
+    <div id="hint">N: nitro · B: handbrake · R: rear view · Enter: back on the road · M: music · Space: sound · Esc: garage</div>
     <div id="street"></div>
     <div id="speedbox"><div id="speed">0</div><small>KM/H</small><div id="nitro"><div id="nitrofill"></div></div></div>
   </div>
   <div id="credit">Map data © OpenStreetMap contributors</div>
+  <div id="mute">SOUND OFF · Space to turn it on</div>
 
 </body>
 </html>
