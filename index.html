@@ -53,7 +53,36 @@
     .card .swatch { height: 9px; border-radius: 5px; margin-bottom: 6px; }
     .card h3 { margin: 0 0 6px; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .stat { display: grid; grid-template-columns: 54px 1fr; align-items: center; gap: 6px; font-size: 11px; opacity: 0.95; margin-top: 3px; }
-    .stat i { display: block; height: 6px; background: #0007; border-radius: 3px; overflow: hidden; }
+    .stat i { display: flex; height: 6px; background: #0007; border-radius: 3px; overflow: hidden; }
+    .stat b.plus { background: #7ee0ff; }
+    .card h3 em { font-size: 10px; font-style: normal; color: #7ee0ff; letter-spacing: 1px; text-transform: uppercase; }
+    #walletbox { display: flex; align-items: center; gap: 8px; }
+    #wallet { font-weight: bold; font-size: 17px; color: #ffe27a; letter-spacing: 0.5px; white-space: nowrap; }
+    #shop { display: none; margin-top: 12px; padding: 12px 16px; border-radius: 12px; background: #101414ee; border: 1px solid #fff2; max-height: 52vh; overflow-y: auto; position: relative; }
+    #shop.open { display: block; }
+    .panel.shopping #cards, .panel.shopping #help, .panel.shopping #mp, .panel.shopping #mpPlayers, .panel.shopping .keys { display: none !important; }
+    .panel.shopping #shop { max-height: 58vh; }
+    #shopclose { position: sticky; top: 0; float: right; z-index: 2; }
+    #shopbox h2 { margin: 0 0 6px; font-size: 20px; display: flex; align-items: center; gap: 10px; }
+    #shopbox h2 small { font-size: 14px; color: #ffe27a; font-weight: normal; }
+    #shopbox h2 .sw { width: 22px; height: 10px; border-radius: 4px; display: inline-block; }
+    #shopbox h3 { margin: 12px 0 6px; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7; }
+    #shopbox .msg { margin: 4px 0; color: #9ff0b0; }
+    #shopbox .row { display: grid; grid-template-columns: 110px 1fr 70px 190px; align-items: center; gap: 10px; padding: 5px 0; border-bottom: 1px solid #ffffff12; }
+    #shopbox .blurb { font-size: 13px; opacity: 0.85; } #shopbox .blurb small { opacity: 0.7; margin-left: 6px; }
+    #shopbox .pips { display: flex; gap: 4px; } #shopbox .pips i { width: 14px; height: 8px; border-radius: 2px; background: #ffffff22; }
+    #shopbox .pips i.on { background: #7ee0ff; }
+    #shopbox button { font: bold 13px inherit; font-family: inherit; color: inherit; background: #ffffff18; border: 2px solid transparent; border-radius: 8px; padding: 6px 10px; cursor: pointer; }
+    #shopbox button:hover:not(:disabled) { background: #ffffff2c; } #shopbox button:disabled { opacity: 0.35; cursor: not-allowed; }
+    #shopbox .swatches { display: flex; flex-wrap: wrap; gap: 8px; }
+    #shopbox .swatch { display: flex; flex-direction: column; align-items: flex-start; min-width: 96px; border-left: 14px solid var(--c, #888); }
+    #shopbox .swatch.pearl { border-image: linear-gradient(var(--c), #ffd6f5, #c9f2ff, var(--c)) 1; }
+    #shopbox .swatch.on { border-color: var(--c, #888); outline: 2px solid var(--sun); }
+    #shopbox .swatch em { font-style: normal; font-weight: normal; font-size: 11px; opacity: 0.8; }
+    #shopbox .plate-yellow { --c: #f2c500; } #shopbox .plate-white { --c: #ecece6; } #shopbox .plate-black { --c: #151517; }
+    #shopbox .horn { display: inline-flex; gap: 2px; } #shopbox .try { padding: 6px 9px; }
+    #shopbox .earn { font-size: 13px; opacity: 0.75; margin: 12px 0 0; }
+    @media (max-width: 720px) { #shopbox .row { grid-template-columns: 1fr 70px; } #shopbox .blurb { display: none; } }
     .stat b { display: block; height: 100%; background: var(--sun); }
     .keys { margin: 10px 0 0; font-size: 13px; opacity: 0.8; }
     kbd { background: #ffffff22; border-radius: 4px; padding: 1px 6px; font: inherit; }
@@ -97,6 +126,7 @@
     .mode { font: bold 14px inherit; font-family: inherit; color: inherit; background: #ffffff14; border: 2px solid transparent; border-radius: 8px;
       padding: 7px 14px; cursor: pointer; letter-spacing: 0.5px; }
     .mode:hover { background: #ffffff24; } .mode.sel { border-color: var(--sun); background: #ffffff2c; }
+    .mode.party { display: none; } body.inparty .mode.party { display: inline-block; }
     #modeblurb { font-size: 14px; opacity: 0.85; margin-left: 6px; flex: 1; min-width: 200px; }
 
     #modehud { position: absolute; left: 0; right: 0; top: 14px; text-align: center; text-shadow: 0 2px 6px #000c; }
@@ -138,6 +168,11 @@
     #nitro { width: 170px; height: 9px; background: #0008; border-radius: 5px; margin: 8px 0 0 auto; overflow: hidden; border: 1px solid #fff3; }
     #nitrofill { height: 100%; width: 100%; background: linear-gradient(90deg, #37c0e8, #9ff0ff); }
     #nitro.on #nitrofill { background: linear-gradient(90deg, #ff9d2e, #ffe07a); }
+    #combo { display: flex; justify-content: flex-end; align-items: center; gap: 8px; margin-top: 6px; opacity: 0; transition: opacity 0.2s; }
+    #combo.on { opacity: 1; }
+    #combox { font-size: 22px; font-weight: bold; font-style: italic; color: #ffe27a; }
+    #combo i { display: block; width: 110px; height: 5px; background: #0008; border-radius: 3px; overflow: hidden; }
+    #combo b { display: block; height: 100%; width: 100%; background: #ffe27a; }
     #street { position: absolute; right: 26px; bottom: 134px; font-size: 22px; font-style: italic; text-shadow: 0 2px 6px #000c; }
     #place { position: absolute; left: 0; right: 0; top: 21%; text-align: center; font-size: clamp(26px, 4vw, 46px); font-style: italic;
       font-weight: bold; text-shadow: 2px 2px 0 var(--clay), 0 3px 12px #000a; opacity: 0; }
@@ -190,7 +225,7 @@
     #credit { position: fixed; right: 8px; top: 6px; font-size: 11px; opacity: 0.6; z-index: 12; text-shadow: 0 1px 2px #000; }
     @media (prefers-reduced-motion: reduce) { #place.show { animation-duration: 0.01s; opacity: 1; } }
   </style>
-  <script type="module" crossorigin src="./assets/index-BR-HxkK7.js"></script>
+  <script type="module" crossorigin src="./assets/index-DMRHGibt.js"></script>
 </head>
 <body>
   <canvas id="c"></canvas>
@@ -207,13 +242,15 @@
         <span class="touchhelp">Slide a thumb on the left to steer; GAS, BRAKE, NITRO and DRIFT are on the right.</span>
         Type your name for the number plate, pick a bajaj and a mode, then press DRIVE. Landmarks are on the map, and
         seven gold keys are hidden round town in free roam (the clues are on the pause screen).
-        To play with friends, one of you creates a room and shares the code.
+        Slides, jumps and close shaves refill your nitro; shillings you earn buy upgrades and paint in the Shop.
+        To play with friends, one of you creates a room and shares the code (then try the party games).
         <button id="helpok" class="mode">Got it</button>
       </div>
       <div class="row">
         <label for="playername">Your plate</label>
         <input id="playername" maxlength="10" placeholder="YOUR NAME" autocomplete="off" spellcheck="false" />
         <div id="summary"></div>
+        <div id="walletbox"><span id="wallet">TSh 0</span><button id="shopbtn" class="mode">Shop</button></div>
         <button id="drive">DRIVE</button>
       </div>
       <div id="modes">
@@ -222,6 +259,8 @@
         <button class="mode" data-mode="race0" title="Race: City Centre Sprint. Two 2.2 km laps of the old town against five rivals: Samora Avenue, the Clock Tower, the cathedral.">Race: City Sprint</button>
         <button class="mode" data-mode="race1" title="Race: Kivukoni Loop. One 3.9 km lap from the Askari Monument out to the fish market and back.">Race: Kivukoni Loop</button>
         <button class="mode" data-mode="race2" title="Race: Tanzanite Bridge Run. 2.5 km point to point, from the Askari Monument to the Tanzanite Bridge.">Race: Bridge Run</button>
+        <button class="mode party" data-mode="rush" title="Party: Key Rush. Everyone after the same seven keys: the first to touch one gets it. Most keys wins. (In a room, 2 or more.)">Party: Key Rush</button>
+        <button class="mode party" data-mode="tag" title="Party: Polisi. One of you is the police: bump someone and they are. Least time as the police after 5 minutes wins. (In a room, 2 or more.)">Party: Polisi</button>
         <span id="modeblurb"></span>
       </div>
       <div id="mp">
@@ -235,6 +274,7 @@
       </div>
       <div id="mpPlayers"></div>
       <div id="cards"></div>
+      <div id="shop"><button id="shopclose" class="mode">Done</button><div id="shopbox"></div></div>
       <p class="keys"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or arrows to drive · <kbd>N</kbd> nitro · <kbd>B</kbd> handbrake ·
         <kbd>H</kbd> horn · <kbd>Enter</kbd> back onto the road · <kbd>R</kbd> rear view · <kbd>C</kbd> camera · <kbd>M</kbd> music · <kbd>Space</kbd> sound on/off ·
         <kbd>T</kbd> skip an hour · <kbd>P</kbd> pause · <kbd>K</kbd> key guide · <kbd>G</kbd> race again · <kbd>Esc</kbd> garage. A game controller works too.</p>
@@ -255,7 +295,7 @@
     <div id="clock">08:30</div>
     <div id="hint">N: nitro · B: handbrake · R: rear view · Enter: back on the road · M: music · Space: sound · Esc: garage</div>
     <div id="street"></div>
-    <div id="speedbox"><div id="speed">0</div><small>KM/H</small><div id="nitro"><div id="nitrofill"></div></div></div>
+    <div id="speedbox"><div id="speed">0</div><small>KM/H</small><div id="nitro"><div id="nitrofill"></div></div><div id="combo"><span id="combox">×2</span><i><b id="combofill"></b></i></div></div>
   </div>
   <div id="credit">Map data © OpenStreetMap contributors</div>
   <div id="mute">SOUND OFF · Space to turn it on</div>
