@@ -134,6 +134,20 @@
     #msub { font-size: 19px; margin-top: 2px; }
     #mright { position: absolute; right: 26px; top: 4px; font-size: 30px; font-weight: bold; font-style: italic; }
     #arrowbox { position: absolute; left: 50%; top: 118px; width: 0; height: 0; }
+    #chase { display: none; position: absolute; left: 50%; top: 98px; transform: translateX(-50%); align-items: center; gap: 14px; }
+    #chase.on { display: flex; }
+    #chase.on ~ #arrowbox { top: 128px; }
+    #heat { display: flex; gap: 5px; }
+    #heat i { width: 16px; height: 10px; border-radius: 3px; background: #0008; border: 1px solid #fff5; }
+    #heat i.on:nth-child(odd) { background: #ff3b3b; box-shadow: 0 0 8px #ff3b3b; } #heat i.on:nth-child(even) { background: #3b7bff; box-shadow: 0 0 8px #3b7bff; }
+    #bust { position: relative; width: 150px; height: 15px; border-radius: 8px; background: #0009; border: 1px solid #fff5; overflow: hidden; }
+    #bust b { position: absolute; inset: 0 auto 0 0; width: 0; background: linear-gradient(90deg, #f2a516, #e0301e); }
+    #bust span { position: absolute; inset: 0; text-align: center; font-size: 10px; line-height: 14px; letter-spacing: 3px; font-weight: bold; text-shadow: 0 1px 2px #000; }
+    #bust.hot { border-color: #ff6a5a; box-shadow: 0 0 10px #e0301e; }
+    #copedge { position: absolute; inset: 0; opacity: 0; transition: opacity 0.4s; box-shadow: inset 60px 0 90px -40px #ff2a2a, inset -60px 0 90px -40px #2a6bff; }
+    #copedge.on { opacity: 0.75; animation: copedge 1.4s ease-in-out infinite alternate; }
+    @keyframes copedge { from { opacity: 0.35; } to { opacity: 0.8; } }
+    @media (prefers-reduced-motion: reduce) { #copedge.on { animation: none; opacity: 0.4; } }
     #arrow { display: none; position: absolute; left: -24px; top: 0; width: 48px; height: 48px; transform-origin: 50% 50%; }
     #arrow::before { content: ""; position: absolute; left: 6px; top: 0; border-left: 18px solid transparent; border-right: 18px solid transparent;
       border-bottom: 40px solid var(--sun); filter: drop-shadow(0 2px 3px #000a); }
@@ -173,7 +187,7 @@
     #combox { font-size: 22px; font-weight: bold; font-style: italic; color: #ffe27a; }
     #combo i { display: block; width: 110px; height: 5px; background: #0008; border-radius: 3px; overflow: hidden; }
     #combo b { display: block; height: 100%; width: 100%; background: #ffe27a; }
-    #street { position: absolute; right: 26px; bottom: 134px; font-size: 22px; font-style: italic; text-shadow: 0 2px 6px #000c; }
+    #street { position: absolute; right: 26px; bottom: 170px; font-size: 22px; font-style: italic; text-shadow: 0 2px 6px #000c; }
     #place { position: absolute; left: 0; right: 0; top: 21%; text-align: center; font-size: clamp(26px, 4vw, 46px); font-style: italic;
       font-weight: bold; text-shadow: 2px 2px 0 var(--clay), 0 3px 12px #000a; opacity: 0; }
     #place.show { animation: pop 4s ease forwards; }
@@ -206,6 +220,8 @@
     body.touch #hint { display: none; }
     body.touch #credit { right: auto; left: max(8px, env(safe-area-inset-left)); top: 4px; }
     body.touch #radio { top: 24px; }
+    body.touch #modehud { top: 46px; } body.touch #mbig { font-size: 32px; } body.touch #msub { font-size: 15px; } body.touch #mright { font-size: 20px; }
+    body.touch #chase { top: 104px; }
     body.touch #minimap { width: 150px; height: 150px; left: max(10px, env(safe-area-inset-left)); bottom: 10px; }
     body.touch #clock { left: 170px; bottom: 14px; font-size: 22px; }
     body.touch #keys { left: 170px; bottom: 46px; font-size: 15px; }
@@ -213,7 +229,7 @@
     body.touch #keyhunt { font-size: 13px; }
     body.touch #speedbox { right: 270px; bottom: 16px; }
     body.touch #speed { font-size: 46px; }
-    body.touch #street { right: 270px; bottom: 96px; font-size: 16px; }
+    body.touch #street { right: 270px; bottom: 132px; font-size: 16px; }
     body.touch #results .keys::after { content: " · tap here to go again"; }
     #turn { display: none; }
     @media (orientation: portrait) {
@@ -225,7 +241,7 @@
     #credit { position: fixed; right: 8px; top: 6px; font-size: 11px; opacity: 0.6; z-index: 12; text-shadow: 0 1px 2px #000; }
     @media (prefers-reduced-motion: reduce) { #place.show { animation-duration: 0.01s; opacity: 1; } }
   </style>
-  <script type="module" crossorigin src="./assets/index-DMRHGibt.js"></script>
+  <script type="module" crossorigin src="./assets/index-xukwpPzX.js"></script>
 </head>
 <body>
   <canvas id="c"></canvas>
@@ -256,6 +272,7 @@
       <div id="modes">
         <button class="mode" data-mode="roam" title="Free roam: go where you like.">Free roam</button>
         <button class="mode" data-mode="fares" title="Fares: pick up passengers and get them there before the clock runs out. Slides, close shaves and flat-out running earn tips.">Fares</button>
+        <button class="mode" data-mode="getaway" title="Polisi: Kimbia! Carry parcels across town with the police after you. Drive through the rings, don't stop: boxed in is busted. Every two deliveries bring more police.">Polisi: Kimbia!</button>
         <button class="mode" data-mode="race0" title="Race: City Centre Sprint. Two 2.2 km laps of the old town against five rivals: Samora Avenue, the Clock Tower, the cathedral.">Race: City Sprint</button>
         <button class="mode" data-mode="race1" title="Race: Kivukoni Loop. One 3.9 km lap from the Askari Monument out to the fish market and back.">Race: Kivukoni Loop</button>
         <button class="mode" data-mode="race2" title="Race: Tanzanite Bridge Run. 2.5 km point to point, from the Askari Monument to the Tanzanite Bridge.">Race: Bridge Run</button>
@@ -284,6 +301,8 @@
   <div id="hud">
     <div id="place"></div>
     <div id="radio"></div>
+    <div id="copedge"></div>
+    <div id="chase"><div id="heat"><i></i><i></i><i></i><i></i><i></i></div><div id="bust"><b id="bustfill"></b><span>BUSTED</span></div></div>
     <div id="modehud"><div id="mbig"></div><div id="msub"></div><div id="mright"></div></div>
     <div id="arrowbox"><div id="arrow"></div><div id="arrowdist"></div></div>
     <div id="toast"></div>
